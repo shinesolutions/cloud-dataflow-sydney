@@ -1,7 +1,8 @@
 # cloud-dataflow-pipeline-sydney
-Spins up a Cloud Dataflow Pipeline in the Sydney region, reads lot's of useless Wikipedia data from BigQuery, processes it, and dumps the results to a CSV file in GCS.
+[![Open in Cloud Shell](http://gstatic.com/cloudssh/images/open-btn.svg)](https://console.cloud.google.com/cloudshell/open?git_repo=https%3A%2F%2Fgithub.com%2Fnomiddlename%2Fcloud-dataflow-sydney&page=shell&tutorial=tutorial.md)
 
-export `GOOGLE_APPLICATION_CREDENTIALS`=<path-to-your-json-auth-key>
+Spins up a Cloud Dataflow Pipeline in the Sydney region, reads lots of useless Wikipedia data from BigQuery, processes it, and dumps the results to a CSV file in GCS.
+
 
 `--project=grey-sort-challenge
  --runner=DataflowRunner
