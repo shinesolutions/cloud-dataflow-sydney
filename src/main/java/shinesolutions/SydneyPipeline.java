@@ -10,11 +10,15 @@ import org.apache.beam.sdk.transforms.DoFn;
 import org.apache.beam.sdk.transforms.ParDo;
 
 /**
- * Do some randomness
+ * Read one billion rows of wikipedia data from BigQuery,
+ * find all the titles that contain "elbourne",
+ * write those rows out to a CSV file in a GCS bucket
  */
 public class SydneyPipeline {
     private static final String BIG_QUERY_TABLE = "bigquery-samples:wikipedia_benchmark.Wiki1B";
-    private static final String BUCKET = "gs://sydney-dataflow-pipeline/output/titles";
+
+    // EDIT THE LINE BELOW
+    private static final String BUCKET = "gs://<put that bucket name you chose here>/output/titles";
 
     public static void main(String[] args) {
         DataflowPipelineOptions options = PipelineOptionsFactory
@@ -22,14 +26,16 @@ public class SydneyPipeline {
                 .withValidation()
                 .as(DataflowPipelineOptions.class);
         Pipeline pipeline = Pipeline.create(options);
+
         pipeline.apply(BigQueryIO.read().from(BIG_QUERY_TABLE))
                 .apply(ParDo.of(new DoFn<TableRow, String>() {
                     @ProcessElement
                     public void processElement(ProcessContext c) throws Exception {
                         TableRow inputRow = c.element();
                         String title = (String) inputRow.get("title");
-                        if ((title).contains("elbourne"))
-                            c.output(title);
+                        if (title.contains("elbourne")) {
+                          c.output(title);
+                        }
                     }
                 }))
                 .apply(TextIO.write().to(BUCKET)
