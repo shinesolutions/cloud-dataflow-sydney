@@ -14,10 +14,11 @@ Follow these steps to get everything going.
 Dataflow needs a GCS bucket to store your java classes, and we'll also need somewhere
 to put the output of our pipeline.
 
-In the cloud shell, run this command (replacing <some-bucket-name> with a good name):
+In the cloud shell, run this command (replacing `<some-bucket-name>` with a good name):
 ```
-gsutil mb gs://<some-bucket-name> -l australia-southeast1
+gsutil mb -l australia-southeast1 gs://<some-bucket-name>
 ```
+
 If you get an error, it's most likely that there's another bucket with the same name, so try a different one.
 Remember the name of your bucket, you'll need it again soon.
 
@@ -32,13 +33,16 @@ to dataflow pipelines on the command line, but to keep the code simple we'll jus
 
 The line you need to change has a comment above it that says `EDIT THIS LINE`. Replace `<put that bucket name you chose here>` with the bucket name you created in step 1. Save the file.
 
+If that link seems to do nothing, it's most likely because you have third-party cookies disabled in your browser. Click the editor link `walkthrough orion-editor-icon`, and it should provide you a way to work around this problem. You'll then need to navigate to the file we want to edit: `src/main/java/shinesolutions/SydneyPipeline.java`.
+
+
 ## Step 3: Build the dataflow pipeline
 
 Back in the command line, we need to build the java code ready to be deployed in the next step.
 ```
 mvn compile
 ```
-Maven is a build tool for Java. It will download the dependencies needed by the pipeline and compile our Java code. If all goes well, you should see "Build Successful" at the end.
+Maven is a build tool for Java. It will download the dependencies needed by the pipeline and compile our Java code. If all goes well, you should see "BUILD SUCCESS" at the end.
 
 ## Step 4: Deploy the pipeline
 
