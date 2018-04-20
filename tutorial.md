@@ -33,7 +33,10 @@ to dataflow pipelines on the command line, but to keep the code simple we'll jus
 
 The line you need to change has a comment above it that says `EDIT THIS LINE`. Replace `<put that bucket name you chose here>` with the bucket name you created in step 1. Save the file.
 
-If that link seems to do nothing, it's most likely because you have third-party cookies disabled in your browser. Click the editor link `walkthrough orion-editor-icon`, and it should provide you a way to work around this problem. You'll then need to navigate to the file we want to edit: `src/main/java/shinesolutions/SydneyPipeline.java`.
+If that link seems to do nothing, it's most likely because you have third-party cookies disabled in your browser. Click the editor link `walkthrough orion-editor-icon`, and it should provide you a way to work around this problem. You'll then need to navigate to the file we want to edit: `src/main/java/shinesolutions/SydneyPipeline.java`. If you can't see the editor link icon, type this into your cloudshell prompt:
+```
+cloudshell edit src/main/java/shinesolutions/SydneyPipeline.java
+```
 
 
 ## Step 3: Build the dataflow pipeline
